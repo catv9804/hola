@@ -5,10 +5,7 @@ var cors = require('cors');
 const creds = require('./config');
 const app = express()
 app.use(cors())
-var corsOptions={
-	origin:'catvsoft.herokuapp.com/send',
-	optionsSuccessStatus:200
-}
+
 
 var transport = {
     host: 'smtp.gmail.com', // Don’t forget to replace with the SMTP host of your provider
@@ -30,7 +27,7 @@ transporter.verify((error, success) => {
   }
 });
 
-router.post('/send', cors(corsOptions), (req, res, next) => {
+router.post('/send', cors(), (req, res, next) => {
   var name = req.body.name
   var email = req.body.email
   var message = req.body.message
